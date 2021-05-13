@@ -1,0 +1,43 @@
+# define a circuit between <CIRCUIT> and </CIRCUIT> delimiters
+# Elements have two node numbers and either a 
+# resistance R=1/G Ohms or a conductance G=1/R Seimens.
+<CIRCUIT>
+n1=1 n2=2 R=47
+n1=2 n2=0 R=100
+n1=2 n2=3 R=150
+n1=3 n2=4 R=330
+n1=4 n2=0 G=0.0125
+n1=4 n2=0 R=82
+n1=4 n2=5 R=25
+n1=5 n2=0 R=280
+# components do not have to follow their order in the circuit
+n1=6 n2=0 R=100
+n1=5 n2=6 G=0.02
+</CIRCUIT>
+
+# define the terminations between <TERMS> and </TERMS> delimiters
+<TERMS>
+# a 5V Thevenin voltage source with RS=50 ohms connected
+# between node 1 and the implicit common (0) node
+VT=5 RS=50
+# or a 2.5 Amp Norton current source with RS=25 Ohms
+#IN=2.5 RS=25
+#IN=2.5 GS=0.04
+# load connected between last node (6 in this case) and the implicit common (0)
+RL=75
+Fstart=10.0 Fend=10e+6 Nfreqs=10
+</TERMS>
+
+# define the outputs between <OUTPUT> and </OUTPUT> delimiters
+<OUTPUT>
+Vin V
+Vout V
+Iin A
+Iout A
+Pin W
+Zout Ohms
+Pout W
+Zin Ohms
+Av
+Ai
+</OUTPUT>
